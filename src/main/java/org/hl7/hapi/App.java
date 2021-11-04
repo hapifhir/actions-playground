@@ -1,8 +1,8 @@
 package org.hl7.hapi;
 
 /**
- * Hello world!
- *
+ * ‎
+ * Bidi characters above
  */
 public class App 
 {
