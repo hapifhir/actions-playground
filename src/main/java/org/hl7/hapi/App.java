@@ -12,14 +12,15 @@ import java.util.Collection;
  * ‎
  * Bidi characters above
  */
-public class App 
-{
+public class App {
+    final public static String REPO_URL = "https://github.com/hapifhir/actions-playground.git";
+
     public static void main( String[] args ) throws GitAPIException {
         System.out.println( "Hello World!" );
 
         Collection<Ref> refs = Git.lsRemoteRepository()
                 .setHeads(true)
-                .setRemote("https://github.com/hapifhir/actions-playground.git")
+                .setRemote(REPO_URL)
                 .call();
 
         for (Ref ref : refs) {
