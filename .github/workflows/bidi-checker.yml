@@ -14,15 +14,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello_world_job:
+  bidi_checker_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Check for bidi unicode characters in repo
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: HL7/bidi-checker-action@v1.2
-        with:
-          who-to-greet: 'Mark Iantorno'
-      # Use the output from the `hello` step
+      # Checkout the repo code. IMPORTANT, this step is needed to populate the directory defined by GITHUB_WORKSPACE
+      - name: Checkout repo
+        uses: actions/checkout@v1
+        id: checkout
+      # Run the check for bidi characters.
+      - name: Check for bidi characters
+        id: bidi_check
+        uses: HL7/bidi-checker-action@v1.4
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The time was ${{ steps.bidi_check.outputs.time }}"
